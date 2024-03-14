@@ -48,3 +48,13 @@
         margin-left: -100px !important;
     }
 }
+.max-poster {
+    max-width: 300px;
+    aspect-ratio: 2/3;
+    object-fit: contain;
+    margin: auto;
+}
+
+.stars i {
+    color: gold;
+}

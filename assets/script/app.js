@@ -1,5 +1,17 @@
-let curentP = 1;
-let title = "Avatar"
+let curentP = 1
+const rand = [
+  "cds",
+  "3 Idiots",
+  "Baahubali: The Beginning",
+  "Sholay",
+  "gdsf",
+  "Inception",
+  "The Godfather",
+  "Titanic",
+  "Avatar",
+  "Jurassic Park"
+]
+let title = rand[Math.floor(Math.random() * rand.length)] 
 const liDom = document.getElementById("clone").cloneNode(true);
 const loading = document.getElementById("loading");
 liDom.removeAttribute("id");
@@ -47,7 +59,7 @@ function newfav(key) {
     tempElement.remove()
   })
   tempElement.querySelector("div").addEventListener("click", function () {
-    alert("b")
+    window.location.href = `/movie.html?m=${likeData[key].imdbID}`;
   })
   return tempElement;
 }
@@ -78,7 +90,7 @@ function fetchData(url) {
       console.error('Error fetching data:', error);
     })
     .finally(() => {
-      return none;
+      return null;
     });
 }
 fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`)
@@ -90,6 +102,9 @@ function setList(obj) {
     tempElement.querySelector("img").setAttribute("src", element.Poster);
     tempElement.querySelector("h4").innerText = element.Title
     tempElement.querySelector("samp").innerText = `${element.Year} - ${element.Type}`
+    tempElement.querySelector(".more").addEventListener("click", function () {
+      window.location.href = `/movie.html?m=${element.imdbID}`
+    })
     tempElement.querySelector(".add").addEventListener("click", function () {
       setLocal(element)
       let elementLi = newfav(element.imdbID)
