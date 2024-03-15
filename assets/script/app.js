@@ -258,7 +258,7 @@ document.getElementById("navbarDropdown").addEventListener("click", function () 
 });
 
 
-function a2(){
+function a3(){
   fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
   .then(res => res.json())
   .then(data => {
@@ -268,4 +268,4 @@ function a2(){
     console.error('Error fetching data:', error);
   })
 } 
-a2()
+a3()
