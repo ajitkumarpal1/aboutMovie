@@ -104,9 +104,9 @@ let obj = null;
 function fetchData(url) {
   console.log(url)
   fetch(url)
-    .then(x => x.json())
-    .then(y => {
-      obj = y;
+    .then(res => res.json())
+    .then(data => {
+      obj = data;
       setList(obj);
       pagination();
       if (obj.Response != true) {
@@ -256,3 +256,13 @@ search.addEventListener("input", function () {
 document.getElementById("navbarDropdown").addEventListener("click", function () {
   favouriteUl.classList.toggle("d-block");
 });
+
+
+fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
+    .then(res => res.json())
+    .then(data => {
+        console.log("Ajit",data)
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    })
