@@ -103,6 +103,7 @@ let obj = null;
 // Function to fetch movie data from API
 const fetchData = (url) => {
   console.log(url);
+  setTimeout(function () {
   fetch(url)
   .then(res => res.json())
     .then(data => {
@@ -114,6 +115,7 @@ const fetchData = (url) => {
         loading.querySelector("span").innerHTML = loadingStrint[1];
       }
     })
+  },5000)
     .catch(error => {
       loading.querySelector("span").innerHTML = loadingStrint[1];
       console.error('Error fetching data:', error);
