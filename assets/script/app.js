@@ -258,11 +258,14 @@ document.getElementById("navbarDropdown").addEventListener("click", function () 
 });
 
 
-fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
-    .then(res => res.json())
-    .then(data => {
-        console.log("Ajit",data)
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    })
+const a1 = ()=>{
+  fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
+  .then(res => res.json())
+  .then(data => {
+      console.log(data)
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  })
+} 
+a1()
