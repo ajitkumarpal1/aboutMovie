@@ -258,7 +258,7 @@ document.getElementById("navbarDropdown").addEventListener("click", function () 
 });
 
 
-const a1 = ()=>{
+function a2(){
   fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
   .then(res => res.json())
   .then(data => {
@@ -268,4 +268,4 @@ const a1 = ()=>{
     console.error('Error fetching data:', error);
   })
 } 
-a1()
+a2()
