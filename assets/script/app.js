@@ -102,22 +102,29 @@ let obj = null;
 
 // Function to fetch movie data from API
 const fetchData = (url) => {
-  console.log(url)
+  console.log(url);
   fetch(url)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
     .then(data => {
+      // Assuming setList and pagination are defined and depend on obj
       obj = data;
       setList(obj);
       pagination();
-      if (obj.Response != true) {
+      if (obj.Response !== "True") {
         loading.querySelector("span").innerHTML = loadingStrint[1];
       }
     })
     .catch(error => {
       loading.querySelector("span").innerHTML = loadingStrint[1];
       console.error('Error fetching data:', error);
-    })
-}
+    });
+};
+
 
 // Fetch initial movie data
 fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
