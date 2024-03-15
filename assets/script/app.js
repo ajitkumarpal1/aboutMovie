@@ -104,14 +104,9 @@ let obj = null;
 const fetchData = (url) => {
   console.log(url);
   fetch(url)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return res.json();
-    })
+  .then(res => res.json())
     .then(data => {
-      // Assuming setList and pagination are defined and depend on obj
+      console.log(data)
       obj = data;
       setList(obj);
       pagination();
@@ -122,7 +117,8 @@ const fetchData = (url) => {
     .catch(error => {
       loading.querySelector("span").innerHTML = loadingStrint[1];
       console.error('Error fetching data:', error);
-    });
+    }); 
+    a3(url)
 };
 
 
@@ -267,6 +263,7 @@ function a3(url){
   .then(res => res.json())
   .then(data => {
       console.log(data)
+      return data;
   })
   .catch(error => {
     console.error('Error fetching data:', error);
