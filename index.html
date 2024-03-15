@@ -31,13 +31,12 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false">
               <i class="fa fa-heart" aria-hidden="true"></i>
               <samp class="ms-1">My favourite movies</samp>
             </a>
             <ul id="favouriteUl" class="dropdown-menu custom-me-md-5">
-
+              <li></li>
             </ul>
           </li>
 
@@ -50,10 +49,13 @@
 
     <!-- Card deck -->
     <ul style="position: relative;" id="movi-list" class="card-deck row">
-      <li id="loading" style="display: none;top: 50%;left: 50%;position: absolute;z-index: 1;"
-        class="spinner-border text-light" role="status">
-        <span class="visually-hidden">Loading...</span>
+      <li id="loading" style="display: none;">
+        <div style="top: 50%;left: 50%;position: absolute;z-index: 1;"
+          class="spinner-border text-light" role="status">
+        </div>
+        <span style="top: calc(50% + 40px);left: calc(50% - 20px);position: absolute;z-index: 1;color: white ;" class="visually">Loading...</span>
       </li>
+
       <li id="clone" style="display: none;" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <!-- Card -->
         <div class="card bg-light-dark">
@@ -61,10 +63,10 @@
           <div class="view overlay">
             <div style="aspect-ratio: 1/1.5;object-fit: contain;">
               <img style="aspect-ratio: 1/1.5;object-fit: contain;" class="card-img-top bg-dark rounded-3"
-              src="https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
-              alt="Card image cap">
+                src="https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
+                alt="Card image cap">
             </div>
-            
+
             <a href="#!">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -80,13 +82,13 @@
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 
             <div type="button" class="row mt-auto">
-              
+
               <hr class="mt-auto col-12">
               <div class="row ms-auto m-auto  d-flex">
                 <button class="btn btn-light-blue btn-md mt-auto  col-6 justify-content-center d-flex mb-auto more">
                   More
                 </button>
-                <button  title="Add to favourite list"
+                <button title="Add to favourite list"
                   class="add btn btn-light-blue btn-md mt-auto  col-6 justify-content-center d-flex mt-auto"><i
                     class="fa fa-plus-square-o fs-1 m-auto" aria-hidden="true"></i>
                 </button>
@@ -129,11 +131,11 @@
   </nav>
 
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="assets/script/app.js"></script>
+  <script src="assets/script/app.js"></script>
 </body>
 
 </html>
