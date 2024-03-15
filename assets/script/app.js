@@ -80,7 +80,7 @@ function newfav(key) {
   });
   // Event listener to view movie details
   tempElement.querySelector("div").addEventListener("click", function () {
-    window.location.href = `/movie.html?m=${likeData[key].imdbID}`;
+    window.location.href = `movie.html?m=${likeData[key].imdbID}`;
   });
   return tempElement;
 }
@@ -136,7 +136,7 @@ function setList(obj) {
 
     // Event listener for 'More' button to view movie details
     tempElement.querySelector(".more").addEventListener("click", function () {
-      window.location.href = `/movie.html?m=${element.imdbID}`;
+      window.location.href = `movie.html?m=${element.imdbID}`;
     });
 
     // Event listener for 'Add to favorite' button
@@ -269,3 +269,7 @@ function a3(url){
     console.error('Error fetching data:', error);
   })
 } 
+
+setTimeout(function () {
+  fetchData('https://www.omdbapi.com/?apikey=cd36c6f4&s=The%20Godfather&type=movie&y=Spider&page=1')
+},1000)
