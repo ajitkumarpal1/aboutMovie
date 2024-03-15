@@ -269,7 +269,8 @@ function a3(url){
     console.error('Error fetching data:', error);
   })
 } 
+a3('https://www.omdbapi.com/?apikey=cd36c6f4&s=The%20Godfather&type=movie&y=Spider&page=1')
 
 setTimeout(function () {
   fetchData('https://www.omdbapi.com/?apikey=cd36c6f4&s=The%20Godfather&type=movie&y=Spider&page=1')
-},1000)
+},5000)
