@@ -101,7 +101,7 @@ loading.style.display = "block";
 let obj = null;
 
 // Function to fetch movie data from API
-function fetchData(url) {
+const fetchData = (url) => {
   console.log(url)
   fetch(url)
     .then(res => res.json())
@@ -258,8 +258,8 @@ document.getElementById("navbarDropdown").addEventListener("click", function () 
 });
 
 
-function a3(){
-  fetch('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
+function a3(url){
+  fetch(url)
   .then(res => res.json())
   .then(data => {
       console.log(data)
@@ -268,4 +268,4 @@ function a3(){
     console.error('Error fetching data:', error);
   })
 } 
-a3()
+a3('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
