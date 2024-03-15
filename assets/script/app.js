@@ -117,9 +117,6 @@ const fetchData = (url) => {
       loading.querySelector("span").innerHTML = loadingStrint[1];
       console.error('Error fetching data:', error);
     })
-    .finally(() => {
-      return null;
-    });
 }
 
 // Fetch initial movie data
@@ -268,4 +265,3 @@ function a3(url){
     console.error('Error fetching data:', error);
   })
 } 
-a3('https://www.omdbapi.com/?apikey=cd36c6f4&s=ajit&type=movie&y=Spider&page=1')
