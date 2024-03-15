@@ -5,7 +5,7 @@ const rand = [
   "3 Idiots",
   "Baahubali: The Beginning",
   "Sholay",
-  "gdsf",
+  "dog",
   "Inception",
   "The Godfather",
   "Titanic",
@@ -102,6 +102,7 @@ let obj = null;
 
 // Function to fetch movie data from API
 function fetchData(url) {
+  console.log(url)
   fetch(url)
     .then(x => x.json())
     .then(y => {
@@ -235,7 +236,7 @@ let timeoutId;
 // Event listener for search input
 search.addEventListener("input", function () {
   if (search.value == "") {
-    title = "Avatra";
+    title = rand[Math.floor(Math.random() * rand.length)];
   } else {
     title = search.value;
   }
