@@ -86,8 +86,8 @@ function setMetaData(data) {
 }
 /* fatch movie data */
 function fetchMoviData() {
-  console.log(`http://www.omdbapi.com/?apikey=cd36c6f4&i=${movieID}&type=movie`)
-  fetch(`http://www.omdbapi.com/?apikey=cd36c6f4&i=${movieID}&type=movie`)
+  console.log(`https://www.omdbapi.com/?apikey=cd36c6f4&i=${movieID}&type=movie`)
+  fetch(`https://www.omdbapi.com/?apikey=cd36c6f4&i=${movieID}&type=movie`)
     .then(x => x.json())
     .then((response) => {
       movieMetaData = response

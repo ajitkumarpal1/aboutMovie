@@ -101,38 +101,28 @@ loading.style.display = "block";
 let obj = null;
 
 // Function to fetch movie data from API
-const fetchData = async (url) => {
-  try {
-    console.log(url);
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    console.log(data);
-
-    // Assuming setList and pagination are defined elsewhere
-    setList(data);
-    pagination();
-
-    // Check if response is not "True" and update loading message
-    if (data.Response !== "True") {
-      const loadingSpan = loading.querySelector("span");
-      if (loadingSpan) {
-        loadingSpan.innerHTML = loadingString[1];
+const fetchData = (url) => {
+  console.log(url);
+  fetch(String(url))
+  .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      obj = data;
+      setList(obj);
+      pagination();
+      if (obj.Response !== "True") {
+        loading.querySelector("span").innerHTML = loadingStrint[1];
       }
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    const loadingSpan = loading.querySelector("span");
-    if (loadingSpan) {
-      loadingSpan.innerHTML = loadingString[1];
-    }
-  }
-  
+    })
+    .catch(error => {
+      loading.querySelector("span").innerHTML = loadingStrint[1];
+      console.error('Error fetching data:', error);
+    });
 };
 
 
 // Fetch initial movie data
-fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
+fetchData(`https://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
 
 // Function to populate movie list
 function setList(obj) {
@@ -209,7 +199,7 @@ function pagination() {
       loading.style.display = "block";
       loading.querySelector("span").innerHTML = loadingStrint[0];
       curentP = i + 1;
-      fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${i + 1}`);
+      fetchData(`https://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${i + 1}`);
     });
 
     nextPage.before(tamElement);
@@ -224,7 +214,7 @@ nextPage.addEventListener("click", function () {
     movieList.appendChild(loading);
     loading.style.display = "block";
     loading.querySelector("span").innerHTML = loadingStrint[0];
-    fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${curentP}`);
+    fetchData(`https://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${curentP}`);
   }
 });
 
@@ -236,7 +226,7 @@ previousPage.addEventListener("click", function () {
     movieList.appendChild(loading);
     loading.style.display = "block";
     loading.querySelector("span").innerHTML = loadingStrint[0];
-    fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${curentP}`);
+    fetchData(`https://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=${curentP}`);
   }
 });
 
@@ -257,8 +247,8 @@ search.addEventListener("input", function () {
   loading.querySelector("span").innerHTML = loadingStrint[0];
   curentP = 1;
   timeoutId = setTimeout(function () {
-    fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
-    a3(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`)
+    fetchData(`https://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
+    
   }, 500);
 });
 
@@ -266,15 +256,3 @@ search.addEventListener("input", function () {
 document.getElementById("navbarDropdown").addEventListener("click", function () {
   favouriteUl.classList.toggle("d-block");
 });
-
-
-function a3(url){
-  fetch(url)
-  .then(res => res.json())
-  .then(data => {
-      console.log("AJIT",data)
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  })
-} 
