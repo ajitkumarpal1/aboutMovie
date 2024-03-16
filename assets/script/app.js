@@ -101,24 +101,33 @@ loading.style.display = "block";
 let obj = null;
 
 // Function to fetch movie data from API
-const fetchData = (url) => {
-  console.log(url);
-  fetch(String(url))
-  .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      obj = data;
-      setList(obj);
-      pagination();
-      if (obj.Response !== "True") {
-        loading.querySelector("span").innerHTML = loadingStrint[1];
+const fetchData = async (url) => {
+  try {
+    console.log(url);
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    console.log(data);
+
+    // Assuming setList and pagination are defined elsewhere
+    setList(data);
+    pagination();
+
+    // Check if response is not "True" and update loading message
+    if (data.Response !== "True") {
+      const loadingSpan = loading.querySelector("span");
+      if (loadingSpan) {
+        loadingSpan.innerHTML = loadingString[1];
       }
-    })
-    .catch(error => {
-      loading.querySelector("span").innerHTML = loadingStrint[1];
-      console.error('Error fetching data:', error);
-    }); 
-    a3(url)
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    const loadingSpan = loading.querySelector("span");
+    if (loadingSpan) {
+      loadingSpan.innerHTML = loadingString[1];
+    }
+  }
+  
 };
 
 
@@ -249,6 +258,7 @@ search.addEventListener("input", function () {
   curentP = 1;
   timeoutId = setTimeout(function () {
     fetchData(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`);
+    a3(`http://www.omdbapi.com/?apikey=cd36c6f4&s=${title}&type=movie&y=Spider&page=1`)
   }, 500);
 });
 
@@ -262,8 +272,7 @@ function a3(url){
   fetch(url)
   .then(res => res.json())
   .then(data => {
-      console.log(data)
-      return data;
+      console.log("AJIT",data)
   })
   .catch(error => {
     console.error('Error fetching data:', error);

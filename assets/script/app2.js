@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-(()=>{const queryString = window.location.search;
+const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const movieID = urlParams.get('m')
 const favouriteUl = document.getElementById("favouriteUl")
@@ -132,4 +131,4 @@ tempElement.querySelector(".remove").addEventListener("click", function () {
   remove(movieMetaData.imdbID)
   document.querySelector(`[data-id=${movieMetaData.imdbID}]`).remove();
   stBtn()
-})})()});
+})
