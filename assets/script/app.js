@@ -103,8 +103,7 @@ let obj = null;
 // Function to fetch movie data from API
 const fetchData = (url) => {
   console.log(url);
-  setTimeout(function () {
-  fetch(url)
+  fetch(String(url))
   .then(res => res.json())
     .then(data => {
       console.log(data)
@@ -115,7 +114,6 @@ const fetchData = (url) => {
         loading.querySelector("span").innerHTML = loadingStrint[1];
       }
     })
-  },5000)
     .catch(error => {
       loading.querySelector("span").innerHTML = loadingStrint[1];
       console.error('Error fetching data:', error);
@@ -271,8 +269,3 @@ function a3(url){
     console.error('Error fetching data:', error);
   })
 } 
-a3('https://www.omdbapi.com/?apikey=cd36c6f4&s=The%20Godfather&type=movie&y=Spider&page=1')
-
-setTimeout(function () {
-  fetchData('https://www.omdbapi.com/?apikey=cd36c6f4&s=The%20Godfather&type=movie&y=Spider&page=1')
-},5000)

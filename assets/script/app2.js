@@ -42,7 +42,7 @@ function newfav(key) {
     tempElement.remove()
   })
   tempElement.querySelector("div").addEventListener("click", function () {
-    window.location.href = `/movie.html?m=${likeData[key].imdbID}`;
+    window.location.href = `movie.html?m=${likeData[key].imdbID}`;
   })
   return tempElement;
 }
